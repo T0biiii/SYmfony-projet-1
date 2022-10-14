@@ -1,0 +1,25 @@
+<div class="card">
+  <img src="{{ asset('images/Article-Image.jfif') }}" class="card-img-top" alt="Fissure in Sandstone"/>
+  <div class="card-body">
+    <h5 class="card-title">{{ article.nom }}</h5>
+    <p class="card-text">{{ article.description }}</p>
+    <p class="card-text">{{ article.prix }}€</p>
+    <p class="card-text">{{ article.marque }}</p>
+    <p class="card-text">{{ article.couleur }}</p>
+    <a href="{{ path('app_article', { id: article.id }) }}">Plus de détails</a>
+  </div>
+</div>
+
+    {% if articles|length > 0 %}
+      <div>Il y à {{ articles|length }} articles.</div>
+        {% endif %}
+{% if previous >= 0 %}
+      <a href="{{ path('article', { id: article.id, offset: previous }) }}">Previous</a>
+        {% endif %}
+          {% if next < articles|length %}
+            <a href="{{ path('article', { id: article.id, offset: next }) }}">Next</a>
+        {% endif %}
+
+          <p>
+            <a href="/article/{{ article.id }}">Voir</a>
+        </p>

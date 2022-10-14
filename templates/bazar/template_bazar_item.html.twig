@@ -1,0 +1,24 @@
+<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+    <div class="single-new-arrival mb-50 text-center">
+        <div class="popular-img">
+            <img src="{{asset('assets/img/gallery/'~( article.img)) }}" alt="">
+            <div class="favorit-items">
+                <!-- <span class="flaticon-heart"></span> -->
+                <img src="{{asset('assets/img/gallery/favorit-card.png') }}" alt="">
+            </div>
+        </div>
+        <div class="popular-caption">
+            <h3><a href="{{path('app_article',{id: article.id})}}">{{article.nom}}</a></h3>
+            <h4><a href="#">{{article.description}}</a></h4>
+            <h5><a href="#">{{article.marque}}</a></h5>
+            <div class="rating mb-10">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <span>{{ article.prix }} €</span>
+        </div>
+    </div>
+</div>   

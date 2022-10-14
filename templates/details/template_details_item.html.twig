@@ -1,0 +1,30 @@
+  <!--?  Details start -->
+        <div class="directory-details pt-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="small-tittle mb-20">
+                            <h2>Description</h2>
+                        </div>
+                        <div class="directory-cap mb-40">
+                            
+                             <h3><a href="product_details.html">{{article.nom}}</a></h3>
+                            <h4><a href="product_details.html">{{article.description}}</a></h4>
+                             <h5><a href="product_details.html">Marque : {{article.marque}}</a></h5>
+                             <h6><a href="product_details.html">Taille {{article.taille}}</a></h6>
+                        </div>
+                        <div class="small-tittle mb-20">
+                            <h2>Image</h2>
+                        </div>
+                        <div class="gallery-img">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img src="{{asset('assets/img/gallery/'~( article.img)) }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    

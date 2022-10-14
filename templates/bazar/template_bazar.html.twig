@@ -1,0 +1,196 @@
+<!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start-->
+    <header>
+        <!-- Header Start -->
+            {% include 'index/template_header.html.twig' %}
+                            <!-- Social -->
+                            <div class="header-social d-none d-md-block">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <!-- header end -->
+    <main>
+        <!-- breadcrumb Start-->
+        <div class="page-notification">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="index">Accueil</a></li>
+                                <li class="breadcrumb-item"><a href="bazar">Bazar</a></li> 
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- listing Area Start -->
+        <div class="category-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-10 col-lg-8 col-md-10">
+                        <div class="section-tittle mb-50">
+                            <h2>Faites vous plaisir!</h2>
+                            <p>Une multitudes de produits n'attendent que vous</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--? Left content -->
+                    <div class="col-xl-3 col-lg-3 col-md-4 ">
+                        <!-- Job Category Listing start -->
+                        <div class="category-listing mb-50">
+                            <!-- single one -->
+                            <div class="single-listing">
+                                <!-- Select City items start -->
+                                <div class="select-job-items2">
+                                    <select name="select2">
+                                        <option value="">Categories</option>
+                                        <option value="">Casquettes</option>
+                                        <option value="">T-shirt</option>
+                                        <option value="">Pantalon</option>
+                                        <option value="">Robe</option>
+                                    </select>
+                                </div>
+                                <!--  Select City items End-->
+                                <!-- Select State items start -->
+                                <div class="select-job-items2">
+                                    <select name="select3">
+                                        <option value="">Taille</option>
+                                        <option value="">XS</option>
+                                        <option value="">S</option>
+                                        <option value="">M</option>
+                                        <option value="">L</option>
+                                        <option value="">XL</option>
+                                        <option value="">XXL</option>
+                                    </select>
+                                </div>
+                                <!--  Select km items End-->
+                                <!-- Select km items start -->
+                                <div class="select-job-items2">
+                                    <select name="select5">
+                                        <option value="">Couleur</option>
+                                        <option value="">Blanc</option>
+                                        <option value="">Vert</option>
+                                        <option value="">Bleu</option>
+                                        <option value="">Bleu ciel</option>
+                                        <option value="">Gris</option>
+                                    </select>
+                                </div>
+                                <!--  Select km items End-->
+                                <!-- Select km items start -->
+                                <div class="select-job-items2">
+                                    <select name="select6">
+                                        <option value="">Tranche de prix</option>
+                                        <option value="">10€-20€</option>
+                                        <option value="">20-30€</option>
+                                        <option value="">50-80€</option>
+                                        <option value="">100-120€</option>
+                                        <option value="">200-300€</option>
+                                        <option value="">500-600€</option>
+                                    </select>
+                                </div>
+                                <!--  Select km items End-->
+                            </div>
+                        </div>
+                        <!-- Job Category Listing End -->
+                    </div>
+                    <!--?  Right content -->
+                    <div class="col-xl-9 col-lg-9 col-md-8 ">
+
+                        <div class="new-arrival new-arrival2">
+                            <div class="row">
+                        <!--?? New Arrival Start -->
+                          {% if articles|length > 0 %}
+                            {% for article in articles %}
+                       {% include 'bazar/template_bazar_item.html.twig' %}
+                           <p>
+                                <a href="{{ path('app_article', { id: article.id }) }}">Voir</a>
+                            </p>     
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+<!-- Button -->
+<div class="row justify-content-center">
+    <div class="room-btn mt-20">
+        <a href="catagori.html" class="border-btn">En voir plus</a>
+    </div>
+</div>
+</div>
+<!--? New Arrival End -->
+</div>
+</div>
+</div>
+</div>
+<!-- listing-area Area End -->
+<!--? Popular Items Start -->
+{% include 'index/template_item_populaire.html.twig' %}
+<!-- Popular Items End -->
+<!--? Services Area Start -->
+{% include 'index/template_service_bazar.html.twig' %}
+<!--? Services Area End -->
+</main>
+
+<footer>
+    <!-- Footer Start-->
+{% include 'index/template_bas_page.html.twig' %}
+<!-- footer-bottom area -->
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="footer-border">
+           <div class="row d-flex align-items-center">
+               <div class="col-xl-12 ">
+                   <div class="footer-copy-right text-center">
+                       <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                          <!--Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Footer End-->
+</footer>
+<!--? Search model Begin -->
+<div class="search-model-box">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-btn">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Searching key.....">
+        </form>
+    </div>
+</div>
+<!-- Search model end -->
+<!-- Scroll Up -->
+<div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+
+
+</body>
+</html>

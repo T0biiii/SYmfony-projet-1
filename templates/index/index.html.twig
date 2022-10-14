@@ -1,0 +1,169 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bazar en ligne{% endblock %}
+
+{% block body %}
+
+<body class="full-wrapper">
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ asset('images/bazard1.jpg') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Preloader Start-->
+{% include 'index/template_header.html.twig' %} 
+    <!-- header end -->
+    <main>
+        <!--? Hero Area Start-->
+        <div class="container-fluid">
+            <div class="slider-area">
+                <!-- Mobile Device Show Menu-->
+                <div class="header-right2 d-flex align-items-center">
+                    <!-- Social -->
+                    <div class="header-social  d-block d-md-none">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                    <!-- Search Box -->
+                    <div class="search d-block d-md-none" >
+                        <ul class="d-flex align-items-center">
+                            <li class="mr-15">
+                                <div class="nav-search search-switch">
+                                    <i class="ti-search"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card-stor">
+                                    <img src="assets/img/gallery/card.svg" alt="">
+                                    <span>0</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /End mobile  Menu-->
+
+                <div class="slider-active dot-style">
+                    <!-- Image défilante -->
+                    {% include 'index/template_image_defilante.html.twig' %}
+        <!-- End Hero -->
+        <!--? Popular Items Start -->
+            {% include 'index/template_item_populaire.html.twig' %}
+        <!-- Popular Items End -->
+        <!--? New Arrival Start -->
+<div class="new-arrival">
+    <div class="container">
+        <!-- Section tittle -->
+        {% include 'index/template_expo_item.html.twig' %}
+<!-- Button -->
+<div class="row justify-content-center">
+    <div class="room-btn">
+        <a href="catagori.html" class="border-btn">En voir plus</a>
+    </div>
+</div>
+</div>
+</div>
+<!--? New Arrival End -->
+<!--? collection -->
+    {% include 'index/template_collection.html.twig' %}
+<!-- End collection -->
+
+<!--? Popular Locations Start 01-->
+    {% include 'index/template_location.html.twig' %}
+<!-- Popular Locations End -->
+<!--? Services Area Start -->
+    {% include 'index/template_service_bazar.html.twig' %}
+<!--? Services Area End -->
+</main>
+<footer>
+    <!-- Footer Start-->
+    {% include 'index/template_bas_page.html.twig' %}
+<!-- footer-bottom area -->
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="footer-border">
+           <div class="row d-flex align-items-center">
+               <div class="col-xl-12 ">
+                   <div class="footer-copy-right text-center">
+                       <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                          <!--Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Footer End-->
+</footer>
+<!--? Search model Begin -->
+<div class="search-model-box">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-btn">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Searching key.....">
+        </form>
+    </div>
+</div>
+<!-- Search model end -->
+<!-- Scroll Up -->
+<div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+<!-- JS here -->
+<!-- Jquery, Popper, Bootstrap -->
+<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="./assets/js/popper.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+
+<!-- Slick-slider , Owl-Carousel ,slick-nav -->
+<script src="./assets/js/owl.carousel.min.js"></script>
+<script src="./assets/js/slick.min.js"></script>
+<script src="./assets/js/jquery.slicknav.min.js"></script>
+
+<!-- One Page, Animated-HeadLin, Date Picker -->
+<script src="./assets/js/wow.min.js"></script>
+<script src="./assets/js/animated.headline.js"></script>
+<script src="./assets/js/jquery.magnific-popup.js"></script>
+<script src="./assets/js/gijgo.min.js"></script>
+
+<!-- Nice-select, sticky,Progress -->
+<script src="./assets/js/jquery.nice-select.min.js"></script>
+<script src="./assets/js/jquery.sticky.js"></script>
+<script src="./assets/js/jquery.barfiller.js"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="./assets/js/jquery.counterup.min.js"></script>
+<script src="./assets/js/waypoints.min.js"></script>
+<script src="./assets/js/jquery.countdown.min.js"></script>
+<script src="./assets/js/hover-direction-snake.min.js"></script>
+
+<!-- contact js -->
+<script src="./assets/js/contact.js"></script>
+<script src="./assets/js/jquery.form.js"></script>
+<script src="./assets/js/jquery.validate.min.js"></script>
+<script src="./assets/js/mail-script.js"></script>
+<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->	
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/main.js"></script>                
+
+                  {% if previous >= 0 %}
+            <a href="{{ path('app_index', {offset: previous }) }}">Previous</a>
+       {% endif %}
+       {% if next < articles|length %}
+            <a href="{{ path('app_index', {offset: next }) }}">Next</a>
+        {% endif %}
+
+                  {% endblock %}
