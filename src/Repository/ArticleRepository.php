@@ -28,7 +28,6 @@ class ArticleRepository extends ServiceEntityRepository
     public function getArticlePaginator(int $offset): Paginator
     {
         $query = $this->createQueryBuilder('c')
-            ->orderBy('c.id', 'DESC')
             ->setMaxResults(self::PAGINATOR_PER_PAGE)
             ->setFirstResult($offset)
             ->getQuery()

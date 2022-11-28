@@ -12,14 +12,14 @@ use Twig\Environment;
 
 class BazarController extends AbstractController
 {
-    #[Route('/bazar', name: 'app_bazar')]
+    /* #[Route('/bazar', name: 'app_bazar')]
     public function bazar(Request $request, Environment $twig, ArticleRepository $articleRepository): Response
     {
         return $this->render('bazar/index.html.twig', [
             'controller_name' => 'BazarController',
             'articles' => $articleRepository->findAll(),
         ]);
-    }
+    } */ 
 
     #[Route('/article/{id}', name: 'app_article')]
     #public function show(Environment $twig, Article $article): Response
@@ -30,6 +30,23 @@ class BazarController extends AbstractController
              'articles' => $ArticleRepository->findBy(['article' => $article]),
          ]));
      }
+
+     #[Route('/bazar', name: 'app_bazar')]
+    public function index(Request $request, Environment $twig, ArticleRepository $articleRepository): Response
+    {
+        $offset = max(0, $request->query->getInt('offset', 0));
+            $paginator = $articleRepository->getArticlePaginator($offset);
+
+
+
+            return new Response($twig->render('bazar/index.html.twig', [
+               
+                'articles' => $paginator,
+                'previous' => $offset - ArticleRepository::PAGINATOR_PER_PAGE,
+                'next' => min(count($paginator), $offset + ArticleRepository::PAGINATOR_PER_PAGE),
+
+        ]));         
+    }
 
 }
 

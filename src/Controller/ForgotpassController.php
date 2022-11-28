@@ -19,17 +19,20 @@ class ForgotpassController extends AbstractController
         $message = new Message();
         $form = $this->createForm(MessageFormType::class, $message);
         $form->handleRequest($request);
+        $successMessage= false;
 
         if ($form->isSubmitted() && $form->isValid()) {
             
             $entityManager->persist($message);
             $entityManager->flush();
+            $successMessage= true;
         }
 
 
 
         return $this->render('forgotpass/index.html.twig', [
             'messageForm' => $form->createView(),
+            'messageRetour' => $successMessage,
         ]);
     }
 }

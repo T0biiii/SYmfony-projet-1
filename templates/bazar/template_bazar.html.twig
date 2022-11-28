@@ -6,27 +6,28 @@
                 <div class="preloader-img pere-text">
                     <img src="assets/img/logo/loder.png" alt="">
                 </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- Preloader Start-->
     <header>
-        <!-- Header Start -->
-            {% include 'index/template_header.html.twig' %}
-                            <!-- Social -->
-                            <div class="header-social d-none d-md-block">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                            </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Header Start -->
+        {% include 'index/template_header.html.twig' %}
+        <!-- Social -->
+        <div class="header-social d-none d-md-block">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
         </div>
+    <!-- Mobile Menu -->
+    <div class="col-12">
+        <div class="mobile_menu d-block d-lg-none"></div>
+    </div>
+</div>
+</div>
+</div>
+</div>
         <!-- Header End -->
     </header>
     <!-- header end -->
@@ -120,26 +121,26 @@
                     <!--?  Right content -->
                     <div class="col-xl-9 col-lg-9 col-md-8 ">
 
-                        <div class="new-arrival new-arrival2">
-                            <div class="row">
+                        
+                            
                         <!--?? New Arrival Start -->
-                          {% if articles|length > 0 %}
-                            {% for article in articles %}
-                       {% include 'bazar/template_bazar_item.html.twig' %}
-                           <p>
-                                <a href="{{ path('app_article', { id: article.id }) }}">Voir</a>
-                            </p>     
-                    {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-<!-- Button -->
-<div class="row justify-content-center">
-    <div class="room-btn mt-20">
-        <a href="catagori.html" class="border-btn">En voir plus</a>
-    </div>
-</div>
-</div>
+                            <div class="new-arrival new-arrival2">
+                                <div class="row">
+                                    {% if articles|length > 0 %}
+                                        {% for article in articles %}
+                                            {% include 'bazar/template_bazar_item.html.twig' %}
+                                        {% endfor %}
+                                     {% endif %}
+                                </div>
+                            
+        <!-- Button -->
+          <h2> {{previous}} - {{next}} </h2>
+    {% if previous >= 0 %}
+            <a class="text-secondary" "text-center" href="{{ path('app_bazar', {offset: previous }) }}">Previous</a>
+       {% endif %}
+       {% if next < articles|length %}
+            <a class="text-secondary" href="{{ path('app_bazar', {offset: next }) }}">Next</a>
+        {% endif %}
 <!--? New Arrival End -->
 </div>
 </div>

@@ -65,9 +65,13 @@
         {% include 'index/template_expo_item.html.twig' %}
 <!-- Button -->
 <div class="row justify-content-center">
-    <div class="room-btn">
-        <a href="catagori.html" class="border-btn">En voir plus</a>
-    </div>
+    {{previous}} - {{next}}
+    {% if previous >= 0 %}
+            <a href="{{ path('app_index', {offset: previous }) }}">Previous</a>
+       {% endif %}
+       {% if next < articles|length %}
+            <a class="text-secondary" href="{{ path('app_index', {offset: next }) }}">Next</a>
+        {% endif %}
 </div>
 </div>
 </div>
@@ -82,6 +86,8 @@
 <!--? Services Area Start -->
     {% include 'index/template_service_bazar.html.twig' %}
 <!--? Services Area End -->
+
+
 </main>
 <footer>
     <!-- Footer Start-->
@@ -159,11 +165,5 @@
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>                
 
-                  {% if previous >= 0 %}
-            <a href="{{ path('app_index', {offset: previous }) }}">Previous</a>
-       {% endif %}
-       {% if next < articles|length %}
-            <a href="{{ path('app_index', {offset: next }) }}">Next</a>
-        {% endif %}
-
-                  {% endblock %}
+       
+{% endblock %}
