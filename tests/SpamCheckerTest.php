@@ -10,25 +10,37 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class SpamCheckerTest extends TestCase
-{$this->expectExceptionMessage('Unable to check for spam: invalid (Invalid key).');
-$checker->getSpamScore($article, $context)};
 {
+    public function testSpamScoreWithInvalidRequest(): void
+     {
 
-    /**
-     * @dataProvider getComments
+        $article = new Article();
+        $article->setCreatedAtValue();
+        $context = [];
+
+        $client = new MockHttpClient([new MockResponse('invalid', ['response_headers' => ['x-akismet-debug-help: Invalid key']])]);
+        $checker = new SpamChecker($client, 'abcde');
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('Unable to check for spam: invalid (Invalid key).');
+        $checker->getSpamScore($article, $context);
+     }
+
+     /**
+     * @dataProvider getArticles
      */
-    public function testSpamScore(int $expectedScore, ResponseInterface $response, Comment $article, array $context)
+    public function testSpamScore(int $expectedScore, ResponseInterface $response, Article $article, array $context)
     {
-        $ = new MockHttpClient([$response]);
-        $checker = new SpamChecker($user, 'abcde');
+        $client = new MockHttpClient([$response]);
+        $checker = new SpamChecker($client, 'abcde');
 
         $score = $checker->getSpamScore($article, $context);
         $this->assertSame($expectedScore, $score);
     }
 
-    public function getComments(): iterable
+    public function getArticles(): iterable
     {
-        $article = new Comment();
+        $article = new Article();
         $article->setCreatedAtValue();
         $context = [];
 
