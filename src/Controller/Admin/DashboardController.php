@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Entity\Message;
 use App\Entity\Client;
+use App\Entity\Category;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -49,6 +50,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Article', 'fas fa-comment-dollar', Article::class);
         yield MenuItem::linkToCrud('Client', 'fas fa-baby', Client::class);
         yield MenuItem::linkToCrud('Message', 'fas fa-baby', Message::class);
+        yield MenuItem::linkToCrud('Category', 'fas fa-comment-dollar', Category::class);
 
     }
 }

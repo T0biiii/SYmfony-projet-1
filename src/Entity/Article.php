@@ -29,9 +29,6 @@ class Article
     private ?string $Image = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $Categorie = null;
-
-    #[ORM\Column(length: 50)]
     private ?string $Marque = null;
 
     #[ORM\Column]
@@ -45,6 +42,9 @@ class Article
 
     #[ORM\Column(length: 255)]
     private ?string $img = null;
+
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -95,18 +95,6 @@ class Article
     public function setImage(string $Image): self
     {
         $this->Image = $Image;
-
-        return $this;
-    }
-
-    public function getCategorie(): ?string
-    {
-        return $this->Categorie;
-    }
-
-    public function setCategorie(string $Categorie): self
-    {
-        $this->Categorie = $Categorie;
 
         return $this;
     }
@@ -167,6 +155,18 @@ class Article
     public function setImg(string $img): self
     {
         $this->img = $img;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

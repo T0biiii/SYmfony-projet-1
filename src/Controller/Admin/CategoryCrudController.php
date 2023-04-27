@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Article;
+use App\Entity\Category;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class ArticleCrudController extends AbstractCrudController
+class CategoryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Article::class;
+        return Category::class;
     }
 
     /*
@@ -17,9 +17,9 @@ class ArticleCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id'),
-            TextField::new('nom'),
+            TextField::new('title'),
             TextEditorField::new('description'),
         ];
     }
-    */ 
+    */
 }
