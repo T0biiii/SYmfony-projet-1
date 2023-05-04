@@ -12,7 +12,7 @@ use Twig\Environment;
 
 class IndexController extends AbstractController
 {
-    #[Route('/index', name: 'app_index')]
+    #[Route('/', name: 'app_index')]
     public function index(Request $request, Environment $twig, ArticleRepository $articleRepository): Response
     {
         $offset = max(0, $request->query->getInt('offset', 0));
