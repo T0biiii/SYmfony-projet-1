@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20221205075712 extends AbstractMigration
+final class Version20230511124152 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,15 +20,16 @@ final class Version20221205075712 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql("INSERT INTO `article` (`id`, `nom`, `prix`, `description`, `image`, `marque`, `etat`, `couleur`, `taille`, `img`, `category_id`, `couleur_id`) VALUES
-        (1, 'T-Shirt', 8000, 'T-Shirt North Face en bonne état', '\"url\"', 'The North Face', 1, 'Noir', 'S', 'article_1.jfif', 2, 0),
-        (2, 'Sweat Noir Adidas', 50, 'Sweat Noir Adidas en état moyen, il y à un trous sur le coude gauche', '\"url\"', 'Adidas', 1, 'Noir', 'S', 'article_2.jfif', 5, 0),
-        (3, 'Slip Gucci', 12000, 'Slip Gucci utilisé que 2 fois', '\"url\"', 'Gucci', 0, 'Orange et bleu', 'L', 'article_3.jpg', 4, 0),
-        (4, 'Casquette North Face', 8000, 'Casquette North Face noir', '\"url\"', 'North Face', 0, 'Noir', 'M', 'article_4.jfif', 1, 0),
-        (5, 'Débardeur', 5000, 'Débardeur blanc', '\"url\"', 'Decathelon', 0, 'blanc', 'S', 'article_5.jfif', 6, 0),
-        (6, 'T-SHirt', 80, 'T-shirt', '\"url\"', 'azaza', 0, 'zazaz', 'M', 'article_6.jfif', NULL, 0),
-        (7, 'pantalon melon', 90, 'pantalon melon', 'image', 'melon', 1, 'marron', 'm', 'img', NULL, 0),
-        (8, 'test', 80, 'test', 'test', 'test', 1, 'test', 'test', 'test', NULL, 0)");
+        $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, category_id INT DEFAULT NULL, couleur_id INT NOT NULL, nom VARCHAR(50) NOT NULL, prix DOUBLE PRECISION NOT NULL, description VARCHAR(255) NOT NULL, image VARCHAR(255) NOT NULL, marque VARCHAR(50) NOT NULL, etat TINYINT(1) NOT NULL, couleur VARCHAR(20) DEFAULT NULL, taille VARCHAR(5) NOT NULL, img VARCHAR(255) NOT NULL, INDEX IDX_23A0E6612469DE2 (category_id), INDEX IDX_23A0E66C31BA576 (couleur_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE category (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE client (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, age INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE couleur (id INT AUTO_INCREMENT NOT NULL, taille VARCHAR(10) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE message (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(50) NOT NULL, email VARCHAR(100) NOT NULL, sujet VARCHAR(50) NOT NULL, etat TINYINT(1) DEFAULT NULL, message LONGTEXT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, nom VARCHAR(50) DEFAULT NULL, prenom VARCHAR(50) DEFAULT NULL, name VARCHAR(255) NOT NULL, surname VARCHAR(255) NOT NULL, pseudo VARCHAR(200) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE messenger_messages (id BIGINT AUTO_INCREMENT NOT NULL, body LONGTEXT NOT NULL, headers LONGTEXT NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at DATETIME NOT NULL, available_at DATETIME NOT NULL, delivered_at DATETIME DEFAULT NULL, INDEX IDX_75EA56E0FB7336F0 (queue_name), INDEX IDX_75EA56E0E3BD61CE (available_at), INDEX IDX_75EA56E016BA31DB (delivered_at), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE article ADD CONSTRAINT FK_23A0E6612469DE2 FOREIGN KEY (category_id) REFERENCES category (id)');
+        $this->addSql('ALTER TABLE article ADD CONSTRAINT FK_23A0E66C31BA576 FOREIGN KEY (couleur_id) REFERENCES couleur (id)');
+
         $this->addSql("INSERT INTO message (id, nom, email, sujet, etat, message) VALUES
         (1, 'lionel', 'lionel@contact.com', 'soucis1', 1, 'totto'),
         (2, 'toto', 'toto@contact.com', 'toto', 1, 'toto'),
@@ -50,16 +51,27 @@ final class Version20221205075712 extends AbstractMigration
         (20, 'utilisateur3@gmail.com', '[]', '\$2y\$13\$255gpiewfUBDX5U4YNLVtuBfoK1NeaPPo5/orcdMadEnNA3BsflM2', NULL, NULL, 'utilisateur3', 'Utilisateur3', ''),
         (21, 'pseudo@gmail.com', '[]', '\$2y\$13\$aLewvCr10YhQ2V5.bACZ.eOlWB/CacHwcb07CyjBPivyZZhuqYJ5W', NULL, NULL, 'pseudo1', 'pseudo1', 'pseudo1'),
         (22, 'admin@admin.com', '[\"ROLE_ADMIN\"]', '\$2y\$13\$Ye7ja6kU2vT0hO5VsFQxGuFmtt6AykN8IIj3W26QpzLg1FjfbioY6', 'admin', 'admin', 'admin', 'admin', 'admin')");
+        $this->addSql("INSERT INTO category (id,name) VALUES
+        (1, 'Casquette'),
+        (2, 't-shirt'),
+        (3, 'pantalon'),
+        (4, 'slip'),
+        (5, 'sweat'),
+        (6, 'Débardeur')");
         
-    } 
-
+    
+    }
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE article DROP FOREIGN KEY FK_23A0E6612469DE2');
+        $this->addSql('ALTER TABLE article DROP FOREIGN KEY FK_23A0E66C31BA576');
         $this->addSql('DROP TABLE article');
+        $this->addSql('DROP TABLE category');
         $this->addSql('DROP TABLE client');
+        $this->addSql('DROP TABLE couleur');
         $this->addSql('DROP TABLE message');
         $this->addSql('DROP TABLE user');
-        $this->addSql('DROP TABLE couleur');
+        $this->addSql('DROP TABLE messenger_messages');
     }
 }
