@@ -20,15 +20,15 @@ final class Version20221205075712 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql("INSERT INTO article (id, nom, prix, description, image, categorie, marque, etat, couleur, taille, img) VALUES
-        (1, 'T-Shirt', 80, 'T-Shirt North Face en bonne état', '\"url\"', 'T-Shirt', 'The North Face', 1, NULL, '', 'article_1.jfif'),
-        (2, 'Sweat Noir Adidas', 50, 'Sweat Noir Adidas en état moyen, il y à un trous sur le coude gauche', '\"url\"', 'Sweat', 'Adidas', 1, NULL, '', 'article_2.jfif'),
-        (3, 'Slip Gucci', 120, 'Slip Gucci utilisé que 2 fois', '\"url\"', 'Slip', 'Gucci', 0, 'Orange et bleu', 'L', 'article_3.jpg'),
-        (4, 'Casquette North Face', 80, 'Casquette North Face noir', '\"url\"', 'Casquette', 'North Face', 0, 'Noir', 'M', 'article_4.jfif'),
-        (5, 'Débardeur', 50, 'Débardeur blanc', '\"url\"', 'Débardeur', 'Decathelon', 0, 'blanc', 'S', 'article_5.jfif'),
-        (6, 'T-SHirt', 80, 'T-shirt', '\"url\"', 't-shirt', 'azaza', 0, 'zazaz', 'M', 'article_6.jfif'),
-        (7, 'pantalon melon', 90, 'pantalon melon', 'image', 'pantalon', 'melon', 1, 'marron', 'm', 'img'),
-        (8, 'test', 80, 'test', 'test', 'test', 'test', 1, 'test', 'test', 'test')");
+        $this->addSql("INSERT INTO `article` (`id`, `nom`, `prix`, `description`, `image`, `marque`, `etat`, `couleur`, `taille`, `img`, `category_id`, `couleur_id`) VALUES
+        (1, 'T-Shirt', 8000, 'T-Shirt North Face en bonne état', '\"url\"', 'The North Face', 1, 'Noir', 'S', 'article_1.jfif', 2, 0),
+        (2, 'Sweat Noir Adidas', 50, 'Sweat Noir Adidas en état moyen, il y à un trous sur le coude gauche', '\"url\"', 'Adidas', 1, 'Noir', 'S', 'article_2.jfif', 5, 0),
+        (3, 'Slip Gucci', 12000, 'Slip Gucci utilisé que 2 fois', '\"url\"', 'Gucci', 0, 'Orange et bleu', 'L', 'article_3.jpg', 4, 0),
+        (4, 'Casquette North Face', 8000, 'Casquette North Face noir', '\"url\"', 'North Face', 0, 'Noir', 'M', 'article_4.jfif', 1, 0),
+        (5, 'Débardeur', 5000, 'Débardeur blanc', '\"url\"', 'Decathelon', 0, 'blanc', 'S', 'article_5.jfif', 6, 0),
+        (6, 'T-SHirt', 80, 'T-shirt', '\"url\"', 'azaza', 0, 'zazaz', 'M', 'article_6.jfif', NULL, 0),
+        (7, 'pantalon melon', 90, 'pantalon melon', 'image', 'melon', 1, 'marron', 'm', 'img', NULL, 0),
+        (8, 'test', 80, 'test', 'test', 'test', 1, 'test', 'test', 'test', NULL, 0)");
         $this->addSql("INSERT INTO message (id, nom, email, sujet, etat, message) VALUES
         (1, 'lionel', 'lionel@contact.com', 'soucis1', 1, 'totto'),
         (2, 'toto', 'toto@contact.com', 'toto', 1, 'toto'),
@@ -50,6 +50,13 @@ final class Version20221205075712 extends AbstractMigration
         (20, 'utilisateur3@gmail.com', '[]', '\$2y\$13\$255gpiewfUBDX5U4YNLVtuBfoK1NeaPPo5/orcdMadEnNA3BsflM2', NULL, NULL, 'utilisateur3', 'Utilisateur3', ''),
         (21, 'pseudo@gmail.com', '[]', '\$2y\$13\$aLewvCr10YhQ2V5.bACZ.eOlWB/CacHwcb07CyjBPivyZZhuqYJ5W', NULL, NULL, 'pseudo1', 'pseudo1', 'pseudo1'),
         (22, 'admin@admin.com', '[\"ROLE_ADMIN\"]', '\$2y\$13\$Ye7ja6kU2vT0hO5VsFQxGuFmtt6AykN8IIj3W26QpzLg1FjfbioY6', 'admin', 'admin', 'admin', 'admin', 'admin')");
+        $this->addSql("INSERT INTO `category` (`id`, `name`) VALUES
+        (1, 'Casquette'),
+        (2, 't-shirt'),
+        (3, 'pantalon'),
+        (4, 'slip'),
+        (5, 'sweat'),
+        (6, 'Débardeur')");
     } 
 
     public function down(Schema $schema): void
@@ -59,5 +66,6 @@ final class Version20221205075712 extends AbstractMigration
         $this->addSql('DROP TABLE client');
         $this->addSql('DROP TABLE message');
         $this->addSql('DROP TABLE user');
+        $this->addSql('DROP TABLE couleur');
     }
 }

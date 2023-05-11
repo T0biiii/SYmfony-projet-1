@@ -4,6 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Entity\Article;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+
 
 class ArticleCrudController extends AbstractCrudController
 {
@@ -12,14 +17,21 @@ class ArticleCrudController extends AbstractCrudController
         return Article::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('nom'),
-            TextEditorField::new('description'),
-        ];
+        yield AssociationField::new('category');
+        yield TextField::new('Nom');
+        yield MoneyField::new('Prix')->setCurrency('EUR');
+        yield TextField::new('Description');
+        yield TextField::new('Image');
+        yield TextField::new('Marque');
+        yield BooleanField::new('Etat');
+        yield TextField::new('Couleur');
+        yield TextField::new('Taille');
+        yield TextField::new('Img');
+
+        
     }
-    */ 
+    
 }

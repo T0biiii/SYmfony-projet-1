@@ -9,3 +9,7 @@ kernel:
 authentication_token:
     path: /authentication_token
     methods: ['POST']
+    
+categorie:
+  path: '/categorie/{slug}'
+  controller: 'App\Controller\ArticleController::categorie'

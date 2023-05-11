@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20221014122358 extends AbstractMigration
+final class Version20230505142238 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,14 @@ final class Version20221014122358 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        // $this->addSql('ALTER TABLE article CHANGE description description VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE article ADD CONSTRAINT FK_23A0E66C31BA576 FOREIGN KEY (couleur_id) REFERENCES couleur (id)');
+        $this->addSql('CREATE INDEX IDX_23A0E66C31BA576 ON article (couleur_id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE article CHANGE description description VARCHAR(150) NOT NULL');
+        $this->addSql('ALTER TABLE article DROP FOREIGN KEY FK_23A0E66C31BA576');
+        $this->addSql('DROP INDEX IDX_23A0E66C31BA576 ON article');
     }
 }

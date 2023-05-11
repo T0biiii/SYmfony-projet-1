@@ -46,6 +46,10 @@ class Article
     #[ORM\ManyToOne(inversedBy: 'articles')]
     private ?Category $category = null;
 
+    #[ORM\ManyToOne(inversedBy: 'category')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Couleur $couleur = null;
+
     public function getId(): ?int
     {
         return $this->id;
