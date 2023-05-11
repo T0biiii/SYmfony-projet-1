@@ -24,6 +24,14 @@ final class Version20230320082314 extends AbstractMigration
         $this->addSql('ALTER TABLE article ADD category_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE article ADD CONSTRAINT FK_23A0E6612469DE2 FOREIGN KEY (category_id) REFERENCES category (id)');
         $this->addSql('CREATE INDEX IDX_23A0E6612469DE2 ON article (category_id)');
+
+        $this->addSql("INSERT INTO `category` (`id`, `name`) VALUES
+        (1, 'Casquette'),
+        (2, 't-shirt'),
+        (3, 'pantalon'),
+        (4, 'slip'),
+        (5, 'sweat'),
+        (6, 'Débardeur')");
     }
 
     public function down(Schema $schema): void

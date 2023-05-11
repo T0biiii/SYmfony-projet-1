@@ -50,13 +50,7 @@ final class Version20221205075712 extends AbstractMigration
         (20, 'utilisateur3@gmail.com', '[]', '\$2y\$13\$255gpiewfUBDX5U4YNLVtuBfoK1NeaPPo5/orcdMadEnNA3BsflM2', NULL, NULL, 'utilisateur3', 'Utilisateur3', ''),
         (21, 'pseudo@gmail.com', '[]', '\$2y\$13\$aLewvCr10YhQ2V5.bACZ.eOlWB/CacHwcb07CyjBPivyZZhuqYJ5W', NULL, NULL, 'pseudo1', 'pseudo1', 'pseudo1'),
         (22, 'admin@admin.com', '[\"ROLE_ADMIN\"]', '\$2y\$13\$Ye7ja6kU2vT0hO5VsFQxGuFmtt6AykN8IIj3W26QpzLg1FjfbioY6', 'admin', 'admin', 'admin', 'admin', 'admin')");
-        $this->addSql("INSERT INTO `category` (`id`, `name`) VALUES
-        (1, 'Casquette'),
-        (2, 't-shirt'),
-        (3, 'pantalon'),
-        (4, 'slip'),
-        (5, 'sweat'),
-        (6, 'Débardeur')");
+        
     } 
 
     public function down(Schema $schema): void
