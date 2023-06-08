@@ -13,3 +13,4 @@ authentication_token:
 categorie:
   path: '/categorie/{slug}'
   controller: 'App\Controller\ArticleController::categorie'
+
